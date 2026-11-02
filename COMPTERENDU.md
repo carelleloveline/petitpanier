@@ -180,7 +180,23 @@ privé du cloud...) et le cluster les télécharge depuis ce registre.
 
 
 
-4.2 :
+4.2 : Les labels app: petitpanier sont des étiquettes placées sur les Pods par le
+
+Deployment. Le Service utilise son selector pour retrouver les Pods qui portent
+
+cette étiquette et leur envoyer le trafic. Si le selector du Service était
+
+différent, il ne trouverait aucun Pod : les Pods seraient Running mais le
+
+Service n'aurait aucun endpoint, et le site ne serait pas accessible.
+
+
+
+!\[preuve 4.2](preuves/preuve-4-2.png)
+
+
+
+
 
 4.3 :
 
