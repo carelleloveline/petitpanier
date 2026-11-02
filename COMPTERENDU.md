@@ -78,6 +78,20 @@ navigateur, il faut publier le port avec -p au lancement du conteneur
 
 2.3 :!\[preuve 2.3 image](preuves/preuve-2-3-image.png)
 
+&#x20;   : !\[preuve 2.3 navigateur](preuves/preuve-2-3-navigateur.png)
+
+&#x20;   : Le . à la fin de docker build indique le contexte de build : c'est le
+
+dossier courant, que Docker utilise pour trouver le Dockerfile et les fichiers
+
+à copier dans l'image (comme index.html). Ici on utilise -p 8080:8080 parce que
+
+l'image nginx-unprivileged écoute sur le port 8080 dans le conteneur, alors que
+
+l'image nginx du palier 1 écoutait sur le port 80. Le port à droite de -p doit
+
+toujours être celui sur lequel l'application écoute dans le conteneur.
+
 
 
 2.4 :
