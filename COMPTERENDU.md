@@ -240,9 +240,45 @@ disponibilité, il faudrait plusieurs nœuds et répartir les Pods entre eux.
 
 
 
-5.2 :
+5.2 :5.2 : C'est le Deployment (plus précisément son ReplicaSet) qui a recréé le Pod.
 
-5.3 :
+Dans mon deployment, l'état désiré est replicas: 3. Quand j'ai supprimé un Pod,
+
+l'état réel est passé à 2 Pods, ce qui ne correspond plus à l'état désiré.
+
+Kubernetes compare en permanence l'état réel à l'état désiré et corrige l'écart :
+
+il a créé un nouveau Pod (xkshg) pour revenir à 3, sans que j'intervienne.
+
+
+
+!\[preuve 5.2](preuves/preuve-5-2.png)
+
+
+
+5.3 : Dans kubectl set image deployment/petitpanier web=petitpanier:2.0, web est le
+
+nom du conteneur dans le Pod, défini par la ligne "- name: web" de mon
+
+deployment.yaml. Il indique quel conteneur du Pod doit changer d'image
+
+(ici passer à petitpanier:2.0). rollout history affiche 2 révisions : la révision 1
+
+(image 1.0) et la révision 2 (image 2.0).
+
+
+
+!\[preuve 5.3 v2](preuves/preuve-5-3-v2.png)
+
+
+
+!\[preuve 5.3 history](preuves/preuve-5-3-history.png)
+
+
+
+!\[preuve 5.3 v1](preuves/preuve-5-3-v1.png)
+
+
 
 
 
