@@ -242,11 +242,21 @@ simplement revérifiée (sans retéléchargement). Au build précédent, le COPY
 
 
 
-Défi 3
+
+
+Défi 3 : J'ai ajouté un service stats (image nginx:alpine, port 8082:80) dans
+
+compose.yaml. La commande docker compose exec stats wget -qO- http://app:8080
+
+affiche la page de mon site : stats joint app grâce au réseau créé par Compose,
+
+où chaque service est joignable par son nom.
 
 
 
 !\[preuve défi 3](preuves/preuve-defi-3.png)
+
+
 
 
 
