@@ -220,6 +220,8 @@ me permet d'ouvrir le site avec http://localhost:8080.
 
 \## Palier 5
 
+
+
 5.1 :
 
 5.2 :
@@ -306,7 +308,29 @@ où chaque service est joignable par son nom.
 
 
 
-Défi 4:
+Défi 4: Dans la section Events de kubectl describe pod, on voit :
+
+Scheduled : le scheduler choisit le nœud (petitpanier-control-plane) sur lequel
+
+placer le Pod.
+
+Pulled : l'image est récupérée ; ici le message dit "already present on machine",
+
+car je l'avais chargée avec kind load, donc rien n'est téléchargé.
+
+Created : le conteneur est créé.
+
+Started : le conteneur démarre.
+
+On voit aussi un Warning "Readiness probe failed" (x2) juste après le démarrage :
+
+la readinessProbe a testé nginx avant qu'il soit prêt. Le Pod est ensuite devenu
+
+Ready (1/1), donc ce n'est pas une panne durable.
+
+
+
+!\[preuve défi 4](preuves/preuve-defi-4.png)
 
 
 
