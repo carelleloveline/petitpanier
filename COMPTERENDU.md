@@ -118,7 +118,25 @@ pour en lancer un nouveau avec l'image 2.0.
 
 \## Palier 3
 
-3.2 :
+!\[preuve 3.1](preuves/preuve-3-1.png)
+
+
+
+3.2 :!\[preuve 3.2 healthy](preuves/preuve-3-2-healthy.png)
+
+
+
+&#x20;   : Up signifie que le conteneur est démarré (le processus tourne). Up   (healthy)
+
+&#x20;  signifie en plus que le test de santé réussit : l'application répond vraiment.
+
+&#x20;  Cette différence vient du bloc healthcheck du compose.yaml (la ligne test avec wget,
+
+&#x20;  exécutée toutes les 10 secondes). Mon service est passé à Up (healthy) avec le test
+
+&#x20;  sur http://127.0.0.1:8080/.
+
+
 
 3.3 :
 
