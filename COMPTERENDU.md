@@ -386,6 +386,24 @@ Ready (1/1), donc ce n'est pas une panne durable.
 
 
 
+Défi 5 : J'ai remplacé replicas: 1 par replicas: 4 dans k8s/deployment.yaml, puis
+
+lancé kubectl apply -f k8s/ : Kubernetes a créé 4 Pods. Une équipe préfère modifier
+
+le fichier plutôt que taper kubectl scale, car le fichier est versionné dans Git :
+
+il garde l'état désiré, on peut le relire, le faire valider et le rejouer. Avec
+
+kubectl scale, le changement n'existe que dans le cluster et le fichier ne
+
+correspond plus à la réalité.
+
+
+
+!\[preuve défi 5](preuves/preuve-defi-5.png)
+
+
+
 
 
 
