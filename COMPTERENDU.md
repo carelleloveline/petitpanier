@@ -94,11 +94,25 @@ toujours être celui sur lequel l'application écoute dans le conteneur.
 
 
 
-2.4 :
+2.4 : !\[preuve 2.4 avant](preuves/preuve-2-4-avant.png)
+
+&#x20;   : !\[preuve 2.4 images](preuves/preuve-2-4-images.png)
+
+&#x20;   : !\[preuve 2.4 apres](preuves/preuve-2-4-apres.png)
 
 
 
+&#x20;    :La page affichait encore la 1.0 parce que le conteneur qui tournait avait
 
+été créé à partir de l'image 1.0. Construire une nouvelle image 2.0 ne modifie
+
+pas un conteneur déjà lancé 
+
+j'ai utilisé docker rm -f petitpanier
+
+pour supprimer l'ancien conteneur, puis docker run --name petitpanier -d -p 8080:8080 petitpanier:2.0
+
+pour en lancer un nouveau avec l'image 2.0.
 
 
 
