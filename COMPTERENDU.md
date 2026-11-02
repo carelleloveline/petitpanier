@@ -76,7 +76,7 @@ navigateur, il faut publier le port avec -p au lancement du conteneur
 
 
 
-2.3 :
+2.3 :!\[preuve 2.3 image](preuves/preuve-2-3-image.png)
 
 
 
