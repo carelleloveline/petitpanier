@@ -222,7 +222,23 @@ me permet d'ouvrir le site avec http://localhost:8080.
 
 
 
-5.1 :
+5.1 :  Non, mes 3 Pods tournent tous sur le même nœud, petitpanier-control-plane,
+
+car mon cluster kind n'a qu'un seul nœud. On ne peut donc pas parler de vraie
+
+haute disponibilité : si ce nœud tombe en panne, les 3 Pods tombent en même temps
+
+et le site est coupé. Les 3 réplicas protègent contre la panne d'un Pod (Kubernetes
+
+en recrée un), mais pas contre la panne d'une machine. Pour une vraie haute
+
+disponibilité, il faudrait plusieurs nœuds et répartir les Pods entre eux.
+
+&#x20;
+
+!\[preuve 5.1](preuves/preuve-5-1.png)
+
+
 
 5.2 :
 
@@ -331,6 +347,8 @@ Ready (1/1), donc ce n'est pas une panne durable.
 
 
 !\[preuve défi 4](preuves/preuve-defi-4.png)
+
+
 
 
 
