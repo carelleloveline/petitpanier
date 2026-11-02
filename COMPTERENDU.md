@@ -162,7 +162,23 @@ en adresse IP du bon conteneur.
 
 
 
-4.1 :
+4.1 : Le cluster kind tourne dans un conteneur Docker : ses nœuds ont leur propre
+
+stockage d'images, séparé de celui de ma machine. Mes images petitpanier:1.0 et
+
+2.0 existent sur mon PC mais pas à l'intérieur du nœud, donc Kubernetes ne peut
+
+pas les trouver. kind load les copie dans le nœud. En entreprise, on publie les
+
+images dans un registre (Docker Hub, GitLab Container Registry, un registre
+
+privé du cloud...) et le cluster les télécharge depuis ce registre.
+
+
+
+!\[preuve 4.1](preuves/preuve-4-1.png)
+
+
 
 4.2 :
 
