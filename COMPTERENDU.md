@@ -60,9 +60,25 @@ partir d'une même image, et supprimer un conteneur ne supprime pas l'image.
 
 ### **## Palier 2**
 
-2.2 :
+2.1 :!\[preuve 2.1](preuves/preuve-2-1.png)
+
+
+
+2.2 : Non, EXPOSE 8080 ne suffit pas. Cette instruction sert seulement à
+
+documenter le port sur lequel l'application écoute dans le conteneur, elle
+
+ne le rend pas accessible depuis ma machine. Pour ouvrir la page dans le
+
+navigateur, il faut publier le port avec -p au lancement du conteneur
+
+(par exemple -p 8080:8080), ce qui relie un port de ma machine au port du conteneur.
+
+
 
 2.3 :
+
+
 
 2.4 :
 
