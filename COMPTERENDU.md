@@ -196,9 +196,25 @@ Service n'aurait aucun endpoint, et le site ne serait pas accessible.
 
 
 
+4.3 : L'adresse dans ENDPOINTS (10.244.0.5:8080) est l'adresse IP interne du Pod
+
+petitpanier dans le cluster, avec le port sur lequel le conteneur écoute. Le Service
+
+l'a trouvée grâce à son selector et lui envoie le trafic. Le Service est de type
+
+ClusterIP : il n'est joignable que depuis l'intérieur du cluster, et le cluster kind
+
+tourne dans un conteneur Docker, hors de portée de mon navigateur. port-forward
+
+crée un tunnel temporaire entre un port de ma machine (8080) et le Service, ce qui
+
+me permet d'ouvrir le site avec http://localhost:8080.
 
 
-4.3 :
+
+!\[preuve 4.3 terminal](preuves/preuve-4-3-terminal.png)
+
+!\[preuve 4.3 navigateur](preuves/preuve-4-3-navigateur.png)
 
 
 
