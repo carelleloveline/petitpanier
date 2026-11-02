@@ -160,6 +160,8 @@ en adresse IP du bon conteneur.
 
 \## Palier 4
 
+
+
 4.1 :
 
 4.2 :
@@ -239,6 +241,12 @@ simplement revérifiée (sans retéléchargement). Au build précédent, le COPY
 !\[preuve défi 2](preuves/preuve-defi-2.png)
 
 
+
+Défi 3
+
+
+
+!\[preuve défi 3](preuves/preuve-defi-3.png)
 
 
 
