@@ -138,9 +138,23 @@ sur http://127.0.0.1:8080/.
 
 
 
-3.3 :
+3.3 : La seconde commande échoue parce que localhost désigne toujours le conteneur
+
+lui-même. Dans le conteneur busybox, localhost est donc busybox, et personne
+
+n'y écoute sur le port 8080 : d'où Connection refused (le message indique d'ailleurs
+
+127.0.0.1). Le site tourne dans un autre conteneur. app est le nom du service
+
+défini dans compose.yaml : Compose le déclare dans le réseau petitpanier\_default,
+
+et les conteneurs de ce réseau peuvent se joindre par ce nom, que Docker traduit
+
+en adresse IP du bon conteneur.
 
 
+
+!\[preuve 3.3](preuves/preuve-3-3.png)
 
 
 
