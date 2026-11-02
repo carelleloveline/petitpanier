@@ -200,7 +200,7 @@ tant que le Dockerfile et les fichiers copiés n'ont pas changé. L'image de bas
 
 simplement revérifiée (sans retéléchargement). Au build précédent, le COPY avait dû
 
-être refait parce que index.html avait été modif
+être refait parce que index.html avait été modifié 
 
 
 
