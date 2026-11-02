@@ -102,7 +102,7 @@ toujours être celui sur lequel l'application écoute dans le conteneur.
 
 
 
-&#x20;    :La page affichait encore la 1.0 parce que le conteneur qui tournait avait
+&#x20;   :La page affichait encore la 1.0 parce que le conteneur qui tournait avait
 
 été créé à partir de l'image 1.0. Construire une nouvelle image 2.0 ne modifie
 
@@ -121,6 +121,8 @@ pour en lancer un nouveau avec l'image 2.0.
 3.2 :
 
 3.3 :
+
+
 
 
 
@@ -187,4 +189,26 @@ Workflow n8n :
 
 
 \## Défis réalisés
+
+
+
+Défi 2 : En relançant docker build sans rien modifier, l'étape COPY est marquée
+
+CACHED et le build prend 0,9 seconde. Docker réutilise les couches déjà construites
+
+tant que le Dockerfile et les fichiers copiés n'ont pas changé. L'image de base est
+
+simplement revérifiée (sans retéléchargement). Au build précédent, le COPY avait dû
+
+être refait parce que index.html avait été modif
+
+
+
+!\[preuve défi 2](preuves/preuve-defi-2.png)
+
+
+
+
+
+
 
