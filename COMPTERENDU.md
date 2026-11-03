@@ -288,9 +288,25 @@ deployment.yaml. Il indique quel conteneur du Pod doit changer d'image
 
 |---|---|---|---|---|
 
-| promo-1 | | | | |
+
+
+| promo-1 | promo-1 | ImagePullBackOff (0/1) | Le tag de l'image est faux, l'image n'existe pas | kubectl describe pod : "Failed to pull image petitpanier:1.O ... repository does not exist" ; docker image ls ne montre que 1.0 et 2.0 | Remplacer 1.O (lettre O) par 1.0 (zéro) dans le fichier, puis kubectl apply |
+
+
+
+&#x20;  !\[preuve 6.1 events](preuves/preuve-6-1.png)
+
+&#x20;  !\[preuve 6.1 apres](preuves/preuve-6-1-apres.png)
+
+
+
+
 
 | promo-2 | | | | |
+
+
+
+
 
 | promo-3 | | | | |
 
