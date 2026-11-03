@@ -318,13 +318,23 @@ deployment.yaml. Il indique quel conteneur du Pod doit changer d'image
 
 
 
-| promo-3 | | | | |
+| promo-3 | Pods Running 1/1 mais site inaccessible | Le selector du Service ne correspond pas aux labels des Pods | kubectl get endpoints : <none> ; selector app=promo-three, label des Pods app=promo-3 | Corriger le selector en app: promo-3, puis kubectl apply |
 
 
 
 6.2 (--previous) :Sans --previous, on lit les logs de l'instance actuelle, qui vient d'être relancée et peut être vide. --previous affiche les logs de l'instance précédente, celle qui a planté. Chez moi les logs n'étaient pas récupérables, j'ai donc utilisé describe.
 
-6.3 (pourquoi Running mais inaccessible) :
+
+
+6.3 (pourquoi Running mais inaccessible) :Running signifie que le conteneur tourne, pas qu'il reçoit du trafic. Le Service visait app=promo-three alors que les Pods portent app=promo-3 : aucun endpoint, donc aucun trafic.
+
+
+
+!\[preuve 6.3](preuves/preuve-6-3.png)
+
+
+
+!\[preuve 6.3 apres](preuves/preuve-6-3-apres.png)
 
 
 
