@@ -438,3 +438,11 @@ correspond plus à la réalité.
 
 !\[preuve défi 5](preuves/preuve-defi-5.png)
 
+
+
+Défi 6 : En mettant path: /sante dans la readinessProbe, le nouveau Pod est Running mais 0/1 : la sonde échoue, donc Kubernetes ne le déclare pas prêt. Les 3 anciens Pods restent 1/1, donc le site reste disponible pendant la mise à jour. J'ai ensuite remis path: / et les Pods sont revenus à 1/1.
+
+
+
+!\[preuve défi 6](preuves/preuve-defi-6.png)
+
