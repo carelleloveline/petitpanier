@@ -106,7 +106,7 @@ toujours être celui sur lequel l'application écoute dans le conteneur.
 
 été créé à partir de l'image 1.0. Construire une nouvelle image 2.0 ne modifie
 
-pas un conteneur déjà lancé 
+pas un conteneur déjà lancé
 
 j'ai utilisé docker rm -f petitpanier
 
@@ -290,11 +290,13 @@ deployment.yaml. Il indique quel conteneur du Pod doit changer d'image
 
 
 
-| promo-1 | promo-1 | ImagePullBackOff (0/1) | Le tag de l'image est faux, l'image n'existe pas | kubectl describe pod : "Failed to pull image petitpanier:1.O ... repository does not exist" ; docker image ls ne montre que 1.0 et 2.0 | Remplacer 1.O (lettre O) par 1.0 (zéro) dans le fichier, puis kubectl apply |
+| promo-1 | ImagePullBackOff (0/1) | Le tag de l'image est faux, l'image n'existe pas | kubectl describe pod : "Failed to pull image petitpanier:1.O ... repository does not exist" ; docker image ls ne montre que 1.0 et 2.0 | Remplacer 1.O (lettre O) par 1.0 (zéro) dans le fichier, puis kubectl apply |
 
 
 
 &#x20;  !\[preuve 6.1 events](preuves/preuve-6-1.png)
+
+
 
 &#x20;  !\[preuve 6.1 apres](preuves/preuve-6-1-apres.png)
 
@@ -302,7 +304,15 @@ deployment.yaml. Il indique quel conteneur du Pod doit changer d'image
 
 
 
-| promo-2 | | | | |
+| promo-2 | CrashLoopBackOff | Le conteneur s'arrête aussitôt avec une erreur | describe pod : Exit Code 1, Restart Count 8 | Supprimer la ligne command, puis kubectl apply |
+
+
+
+!\[preuve 6.2](preuves/preuve-6-2.png)
+
+
+
+!\[preuve 6.2 apres](preuves/preuve-6-2-apres.png)
 
 
 
@@ -312,7 +322,7 @@ deployment.yaml. Il indique quel conteneur du Pod doit changer d'image
 
 
 
-6.2 (--previous) :
+6.2 (--previous) :Sans --previous, on lit les logs de l'instance actuelle, qui vient d'être relancée et peut être vide. --previous affiche les logs de l'instance précédente, celle qui a planté. Chez moi les logs n'étaient pas récupérables, j'ai donc utilisé describe.
 
 6.3 (pourquoi Running mais inaccessible) :
 
@@ -352,7 +362,7 @@ tant que le Dockerfile et les fichiers copiés n'ont pas changé. L'image de bas
 
 simplement revérifiée (sans retéléchargement). Au build précédent, le COPY avait dû
 
-être refait parce que index.html avait été modifié 
+être refait parce que index.html avait été modifié
 
 
 
@@ -417,14 +427,4 @@ correspond plus à la réalité.
 
 
 !\[preuve défi 5](preuves/preuve-defi-5.png)
-
-
-
-
-
-
-
-
-
-
 
