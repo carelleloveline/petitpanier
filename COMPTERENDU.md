@@ -1,4 +1,4 @@
-﻿\# Compte rendu TP PetitPanier - CARELLE
+﻿# Compte rendu TP PetitPanier - CARELLE
 
 
 
@@ -6,7 +6,7 @@ Systèmes utilisés : Windows, Docker Desktop
 
 
 
-\## Palier 1
+## Palier 1
 
 
 
@@ -42,7 +42,7 @@ Systèmes utilisés : Windows, Docker Desktop
 
 
 
-\## Palier 2
+## Palier 2
 
 
 
@@ -86,7 +86,7 @@ Systèmes utilisés : Windows, Docker Desktop
 
 
 
-\## Palier 3
+## Palier 3
 
 
 
@@ -114,7 +114,7 @@ Systèmes utilisés : Windows, Docker Desktop
 
 
 
-\## Palier 4
+## Palier 4
 
 
 
@@ -146,7 +146,7 @@ Systèmes utilisés : Windows, Docker Desktop
 
 
 
-\## Palier 5
+## Palier 5
 
 
 
@@ -182,97 +182,51 @@ Systèmes utilisés : Windows, Docker Desktop
 
 
 
-\## Palier 6 - tableau de diagnostic
-
-
+## Palier 6 - tableau de diagnostic
 
 | Panne | Symptôme | Hypothèse | Commande de preuve et résultat | Correction |
-
 |---|---|---|---|---|
-
 | promo-1 | ImagePullBackOff (0/1) | Le tag de l'image est faux, l'image n'existe pas | kubectl describe pod : "Failed to pull image petitpanier:1.O ... repository does not exist" ; docker image ls ne montre que 1.0 et 2.0 | Remplacer 1.O (lettre O) par 1.0 (zéro) dans le fichier, puis kubectl apply |
-
 | promo-2 | CrashLoopBackOff | Le conteneur s'arrête aussitôt avec une erreur | describe pod : Exit Code 1, Restart Count 8 | Supprimer la ligne command, puis kubectl apply |
-
 | promo-3 | Pods Running 1/1 mais site inaccessible | Le selector du Service ne correspond pas aux labels des Pods | kubectl get endpoints : ENDPOINTS vide (none) ; selector app=promo-three, label des Pods app=promo-3 | Corriger le selector en app: promo-3, puis kubectl apply |
-
-
 
 Preuves promo-1 :
 
-
-
 ![preuve 6.1 events](preuves/preuve-6-1.png)
-
-
 
 ![preuve 6.1 apres](preuves/preuve-6-1-apres.png)
 
-
-
 Preuves promo-2 :
-
-
 
 ![preuve 6.2](preuves/preuve-6-2.png)
 
-
-
 ![preuve 6.2 apres](preuves/preuve-6-2-apres.png)
-
-
 
 Preuves promo-3 :
 
-
-
 ![preuve 6.3](preuves/preuve-6-3.png)
-
-
 
 ![preuve 6.3 apres](preuves/preuve-6-3-apres.png)
 
-
-
 6.2 (--previous) : Sans --previous, on lit les logs de l'instance actuelle, qui vient d'être relancée et peut être vide. --previous affiche les logs de l'instance précédente, celle qui a planté. Chez moi les logs n'étaient pas récupérables, j'ai donc utilisé describe.
-
-
 
 6.3 (pourquoi Running mais inaccessible) : Running signifie que le conteneur tourne, pas qu'il reçoit du trafic. Le Service visait app=promo-three alors que les Pods portent app=promo-3 : aucun endpoint, donc aucun trafic.
 
-
-
-\## Palier 7
-
-
+## Palier 7
 
 | Étape | Commande | Si échec |
-
 |---|---|---|
-
 | build | docker build -t petitpanier:2.0 . | L'image n'est pas créée, le pipeline s'arrête |
-
 | test | docker compose ps (état healthy) | Le service est unhealthy, on ne publie pas |
-
 | publish | kind load docker-image petitpanier:2.0 --name petitpanier | L'image n'arrive pas au cluster, le déploiement échoue |
-
 | deploy | kubectl apply -f k8s/ | L'ancienne version reste en place |
-
-
 
 7.1 : Un tag comme a1b2c3d identifie une version précise du code : on sait exactement ce qui tourne et on peut revenir à une version donnée. latest change à chaque build et ne dit pas quelle version c'est. Au 5.3, rollout undo m'a permis de revenir de la 2.0 à la 1.0 parce que les deux images avaient des tags distincts.
 
-
-
 Workflow n8n : Webhook GitLab (déclencheur) -> IF statut = failed (condition) -> message Slack #petitpanier-ops (action : prévient l'équipe DevOps). Les identifiants (token Slack, secret du webhook) sont rangés dans les Credentials de n8n, jamais écrits dans le workflow ni dans les fichiers du dépôt.
 
-
-
 ![preuve 7.3](preuves/preuve-7-3.png)
-
-
-
-\## Défis réalisés
+## Défis réalisés
 
 
 
@@ -313,5 +267,6 @@ Défi 6 : En mettant path: /sante dans la readinessProbe, le nouveau Pod est Run
 
 
 ![preuve défi 6](preuves/preuve-defi-6.png)
+
 
 
