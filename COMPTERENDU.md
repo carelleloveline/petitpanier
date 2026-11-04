@@ -270,3 +270,4 @@ Défi 6 : En mettant path: /sante dans la readinessProbe, le nouveau Pod est Run
 
 
 
+
